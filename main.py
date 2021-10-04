@@ -1,19 +1,24 @@
-# Function for nth Fibonacci number
- 
-def Fibonacci(n):
-    if n<= 0:
-        print("Incorrect input")
-    # First Fibonacci number is 0
-    elif n == 1:
-        return 0
-    # Second Fibonacci number is 1
-    elif n == 2:
-        return 1
+import math
+
+"""Fibonacci Formula"""
+#fn = ((1+sqrt(5)/2)^n - (1-sqrt(5)/2)^n)/sqrt(5)
+
+"""Binet's Formula to find nth Fibonacci Number"""
+#fn = ((1+sqrt(5)/2)^n - (1-sqrt(5)/2)^n)/(2**n*sqrt(5))
+
+
+def fibofunc(user):
+    """plug user input into formula, replace 'n' with user"""
+    result = int((((1 + math.sqrt(5))**user) - ((1 - math.sqrt(5))**user)) / (2**user*math.sqrt(5)))
+
+    return f"You Entered: {user}\nFibonacci Number: {result}"
+
+
+state = True
+while state:
+    user_input = input("Enter Integer Value ('Q' to exit): ")
+    
+    if user_input.lower() == "q":
+        state = False
     else:
-        return Fibonacci(n-1)+Fibonacci(n-2)
- 
-# Driver Program
- 
-print(Fibonacci(10))
- 
-# This code is contributed by Saket Modi
+        print(fibofunc(int(user_input)))

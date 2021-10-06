@@ -8,17 +8,34 @@ import math
 
 
 def fibofunc(user):
-    """plug user input into formula, replace 'n' with user"""
+    """Fibonacci Nth Number"""
     result = int((((1 + math.sqrt(5))**user) - ((1 - math.sqrt(5))**user)) / (2**user*math.sqrt(5)))
 
-    return f"You Entered: {user}\nFibonacci Number: {result}"
+    return f"\nYour Number: {user}\nFibonacci Number: {result}\n"
 
 
-state = True
-while state:
+def sequence(user):
+    """Fibonacci Sequence"""
+    if user <= 1:
+        return user
+    else:
+        return(sequence(user-1) + sequence(user-2))
+
+
+while True:
     user_input = input("Enter Integer Value ('Q' to exit): ")
     
     if user_input.lower() == "q":
-        state = False
+        break
+
+    user_input = int(user_input) #change user_input to type int
+
+    #if user input is not at least 1, prompt them to enter positive integer
+    if user_input <= 0:
+        print("Enter Positive Integer!")
     else:
-        print(fibofunc(int(user_input)))
+        #call both functions and print their results to terminal
+        print("\nFibonacci Sequence:")
+        for element in range(user_input):
+            print(sequence(element))
+        print(fibofunc(user_input))
